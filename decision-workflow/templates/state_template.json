@@ -1,0 +1,21 @@
+{
+  "session_id": "",
+  "created_at": "",
+  "raw_inputs": [
+    {
+      "timestamp": "",
+      "source": "initial_user_input",
+      "raw_text": ""
+    }
+  ],
+  "raw_input_parse": null,
+  "deep_dive_questions": null,
+  "user_answer_capture": null,
+  "decision_reframe": null,
+  "option_generation": null,
+  "decision_quality_evaluation": null,
+  "non_consensus_insight": null,
+  "contrarian_challenge": null,
+  "recommendation": null,
+  "anti_noise_guardrail": null
+}

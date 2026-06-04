@@ -1,0 +1,171 @@
+name: decision-intelligence-workflow
+version: 1.0.0
+purpose: >
+  Convert casual decision requests into high-leverage, upstream decision analysis
+  with raw input preservation, structured JSON state, deep-dive questions,
+  non-consensus insight, and clear recommendations.
+
+principle: "One good decision saves one hundred downstream decisions."
+
+recommendation_types:
+  - commit
+  - test
+  - delay
+  - reject
+  - redesign
+
+state_file_shape:
+  session_id: string
+  created_at: YYYY-MM-DD
+  raw_inputs: []
+  raw_input_parse: object
+  deep_dive_questions: object
+  user_answer_capture: object
+  decision_reframe: object
+  option_generation: object
+  decision_quality_evaluation: object
+  non_consensus_insight: object
+  contrarian_challenge: object
+  recommendation: object
+  anti_noise_guardrail: object
+
+layers:
+  - id: layer_1
+    name: raw_input_parser
+    prompt: prompts/agents.md#layer-1-raw-input-parser
+    input:
+      - user_raw_input
+    output_schema: schemas/decision_workflow.schema.json#/$defs/raw_input_parse
+    gate:
+      next: layer_2_if_material_missing_info_else_layer_4
+
+  - id: layer_2
+    name: deep_dive_question_agent
+    prompt: prompts/agents.md#layer-2-deep-dive-question-agent
+    input:
+      - raw_input_parse
+    output_schema: schemas/decision_workflow.schema.json#/$defs/deep_dive_questions
+    constraints:
+      max_questions: 7
+      must_include_why_it_matters: true
+    gate:
+      next: wait_for_user_answers
+
+  - id: layer_3
+    name: user_answer_capture
+    prompt: prompts/agents.md#layer-3-user-answer-capture
+    input:
+      - deep_dive_questions
+      - user_raw_answers
+    output_schema: schemas/decision_workflow.schema.json#/$defs/user_answer_capture
+    gate:
+      next: layer_4
+
+  - id: layer_4
+    name: decision_reframe_agent
+    prompt: prompts/agents.md#layer-4-decision-reframe-agent
+    input:
+      - raw_input_parse
+      - user_answer_capture_optional
+    output_schema: schemas/decision_workflow.schema.json#/$defs/decision_reframe
+    gate:
+      next: layer_5
+
+  - id: layer_5
+    name: option_generation_agent
+    prompt: prompts/agents.md#layer-5-option-generation-agent
+    input:
+      - raw_input_parse
+      - decision_reframe
+      - user_answer_capture_optional
+    output_schema: schemas/decision_workflow.schema.json#/$defs/option_generation
+    gate:
+      next: layer_6
+
+  - id: layer_6
+    name: decision_quality_evaluation
+    prompt: prompts/agents.md#layer-6-decision-quality-evaluation
+    input:
+      - option_generation
+      - decision_reframe
+    output_schema: schemas/decision_workflow.schema.json#/$defs/decision_quality_evaluation
+    gate:
+      next: layer_7
+
+  - id: layer_7
+    name: non_consensus_insight_agent
+    prompt: prompts/agents.md#layer-7-non-consensus-insight-agent
+    input:
+      - raw_input_parse
+      - user_answer_capture_optional
+      - decision_reframe
+      - option_generation
+      - decision_quality_evaluation
+    output_schema: schemas/decision_workflow.schema.json#/$defs/non_consensus_insight
+    gate:
+      next: layer_8
+
+  - id: layer_8
+    name: contrarian_challenge_agent
+    prompt: prompts/agents.md#layer-8-contrarian-challenge-agent
+    input:
+      - raw_input_parse
+      - user_answer_capture_optional
+      - decision_reframe
+      - option_generation
+      - decision_quality_evaluation
+      - non_consensus_insight
+    output_schema: schemas/decision_workflow.schema.json#/$defs/contrarian_challenge
+    gate:
+      next: layer_9
+
+  - id: layer_9
+    name: recommendation_agent
+    prompt: prompts/agents.md#layer-9-recommendation-agent
+    input:
+      - decision_reframe
+      - option_generation
+      - decision_quality_evaluation
+      - non_consensus_insight
+      - contrarian_challenge
+    output_schema: schemas/decision_workflow.schema.json#/$defs/recommendation
+    gate:
+      next: final_answer
+
+  - id: layer_10
+    name: anti_noise_guardrail
+    prompt: prompts/agents.md#layer-10-anti-noise-guardrail
+    input:
+      - later_user_question
+      - current_decision_state
+    output_schema: schemas/decision_workflow.schema.json#/$defs/anti_noise_guardrail
+    gate:
+      next: answer_or_redirect
+
+clarification_gate:
+  ask_followups_if:
+    - options_unclear
+    - downside_unclear
+    - irreversibility_unclear
+    - objective_unclear
+    - constraint_could_dominate
+    - high_or_existential_importance
+    - false_binary_detected
+    - stated_desire_conflicts_with_revealed_motivation
+  otherwise:
+    - proceed_to_reframe_and_recommendation
+
+final_answer_requirements:
+  - restate_raw_input
+  - identify_surface_question
+  - identify_better_question
+  - assess_importance
+  - show_option_set
+  - state_consensus_view
+  - state_non_consensus_view
+  - state_strongest_contrarian_objection
+  - answer_contrarian_objection
+  - give_one_recommendation_type
+  - give_next_actions
+  - give_kill_criteria
+  - state_what_would_make_advice_wrong

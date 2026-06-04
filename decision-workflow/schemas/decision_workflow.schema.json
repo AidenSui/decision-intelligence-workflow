@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/decision-workflow/decision_workflow.schema.json",
+  "title": "Decision Intelligence Workflow Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "session_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date" },
+    "raw_inputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/raw_input_record" }
+    },
+    "raw_input_parse": { "$ref": "#/$defs/raw_input_parse" },
+    "deep_dive_questions": { "$ref": "#/$defs/deep_dive_questions" },
+    "user_answer_capture": { "$ref": "#/$defs/user_answer_capture" },
+    "decision_reframe": { "$ref": "#/$defs/decision_reframe" },
+    "option_generation": { "$ref": "#/$defs/option_generation" },
+    "decision_quality_evaluation": { "$ref": "#/$defs/decision_quality_evaluation" },
+    "non_consensus_insight": { "$ref": "#/$defs/non_consensus_insight" },
+    "contrarian_challenge": { "$ref": "#/$defs/contrarian_challenge" },
+    "recommendation": { "$ref": "#/$defs/recommendation" },
+    "anti_noise_guardrail": { "$ref": "#/$defs/anti_noise_guardrail" }
+  },
+  "required": ["session_id", "created_at"],
+  "$defs": {
+    "raw_input_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": { "type": "string" },
+        "source": { "type": "string", "enum": ["initial_user_input", "followup_answer", "later_question", "system_note"] },
+        "raw_text": { "type": "string" }
+      },
+      "required": ["timestamp", "source", "raw_text"]
+    },
+    "importance": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "existential"]
+    },
+    "score_1_to_5": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "rating": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "decision_type": {
+      "type": "string",
+      "enum": ["career", "business", "relationship", "location", "money", "identity", "health", "education", "family", "other"]
+    },
+    "recommendation_type": {
+      "type": "string",
+      "enum": ["commit", "test", "delay", "reject", "redesign"]
+    },
+    "raw_input_parse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw_input": { "type": "string" },
+        "decision_candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "plain_language_summary": { "type": "string" },
+            "decision_type": { "$ref": "#/$defs/decision_type" },
+            "time_horizon": { "type": "string", "enum": ["short_term", "medium_term", "long_term", "life_trajectory"] },
+            "apparent_options": { "type": "array", "items": { "type": "string" } },
+            "implicit_options": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["plain_language_summary", "decision_type", "time_horizon", "apparent_options", "implicit_options"]
+        },
+        "hidden_dilemma": { "type": "string" },
+        "stated_desires": { "type": "array", "items": { "type": "string" } },
+        "stated_fears": { "type": "array", "items": { "type": "string" } },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "known_background": { "type": "array", "items": { "type": "string" } },
+        "assumptions_to_test": { "type": "array", "items": { "type": "string" } },
+        "missing_information": { "type": "array", "items": { "type": "string" } },
+        "decision_importance_assessment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "importance": { "$ref": "#/$defs/importance" },
+            "is_potentially_upstream": { "type": "boolean" },
+            "why": { "type": "string" },
+            "risk_of_overthinking": { "$ref": "#/$defs/rating" },
+            "risk_of_underthinking": { "$ref": "#/$defs/rating" }
+          },
+          "required": ["importance", "is_potentially_upstream", "why", "risk_of_overthinking", "risk_of_underthinking"]
+        },
+        "better_questions": { "type": "array", "items": { "type": "string" } },
+        "clarification_needed": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": [
+        "raw_input",
+        "decision_candidate",
+        "hidden_dilemma",
+        "stated_desires",
+        "stated_fears",
+        "constraints",
+        "known_background",
+        "assumptions_to_test",
+        "missing_information",
+        "decision_importance_assessment",
+        "better_questions",
+        "clarification_needed"
+      ]
+    },
+    "deep_dive_questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "priority": { "type": "integer", "minimum": 1, "maximum": 7 },
+              "question": { "type": "string" },
+              "why_it_matters": { "type": "string" },
+              "category": {
+                "type": "string",
+                "enum": ["stakes", "irreversibility", "default_path", "true_objective", "opportunity_cost", "hidden_constraints", "emotional_truth", "external_reality", "edge", "hidden_options"]
+              },
+              "answer_would_change": { "type": "string" }
+            },
+            "required": ["priority", "question", "why_it_matters", "category", "answer_would_change"]
+          }
+        },
+        "why_not_more_questions": { "type": "string" }
+      },
+      "required": ["questions", "why_not_more_questions"]
+    },
+    "user_answer_capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw_user_answers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "question": { "type": "string" },
+              "raw_answer": { "type": "string" },
+              "timestamp": { "type": "string" }
+            },
+            "required": ["question", "raw_answer", "timestamp"]
+          }
+        },
+        "updated_decision_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "new_facts": { "type": "array", "items": { "type": "string" } },
+            "new_constraints": { "type": "array", "items": { "type": "string" } },
+            "changed_assumptions": { "type": "array", "items": { "type": "string" } },
+            "emotional_signals": { "type": "array", "items": { "type": "string" } },
+            "contradictions": { "type": "array", "items": { "type": "string" } },
+            "high_signal_quotes": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["new_facts", "new_constraints", "changed_assumptions", "emotional_signals", "contradictions", "high_signal_quotes"]
+        }
+      },
+      "required": ["raw_user_answers", "updated_decision_state"]
+    },
+    "decision_reframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "original_question": { "type": "string" },
+        "is_original_question_good": { "type": "boolean" },
+        "why_or_why_not": { "type": "string" },
+        "better_question": { "type": "string" },
+        "upstream_decision": { "type": "string" },
+        "downstream_noise": { "type": "array", "items": { "type": "string" } },
+        "decision_frame": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "core_tradeoff": { "type": "string" },
+            "real_options": { "type": "array", "items": { "type": "string" } },
+            "false_binary_detected": { "type": "boolean" },
+            "recommended_frame": { "type": "string" }
+          },
+          "required": ["core_tradeoff", "real_options", "false_binary_detected", "recommended_frame"]
+        }
+      },
+      "required": ["original_question", "is_original_question_good", "why_or_why_not", "better_question", "upstream_decision", "downstream_noise", "decision_frame"]
+    },
+    "option_generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "option_set": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/option" }
+        },
+        "hidden_options": { "type": "array", "items": { "type": "string" } },
+        "bad_options_to_avoid": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["option_set", "hidden_options", "bad_options_to_avoid"]
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["default", "bold", "hybrid", "experimental", "avoid"] },
+        "reversibility": { "$ref": "#/$defs/rating" },
+        "upside": { "$ref": "#/$defs/rating" },
+        "downside": { "$ref": "#/$defs/rating" },
+        "learning_value": { "$ref": "#/$defs/rating" },
+        "freedom_created": { "$ref": "#/$defs/rating" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "name", "description", "type", "reversibility", "upside", "downside", "learning_value", "freedom_created", "notes"]
+    },
+    "decision_quality_evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "option_id": { "type": "string" },
+              "scores": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "upstream_leverage": { "$ref": "#/$defs/score_1_to_5" },
+                  "optionality": { "$ref": "#/$defs/score_1_to_5" },
+                  "asymmetric_upside": { "$ref": "#/$defs/score_1_to_5" },
+                  "downside_survivability": { "$ref": "#/$defs/score_1_to_5" },
+                  "reversibility": { "$ref": "#/$defs/score_1_to_5" },
+                  "learning_rate": { "$ref": "#/$defs/score_1_to_5" },
+                  "identity_alignment": { "$ref": "#/$defs/score_1_to_5" },
+                  "market_reality": { "$ref": "#/$defs/score_1_to_5" },
+                  "energy_truth": { "$ref": "#/$defs/score_1_to_5" },
+                  "regret_minimization": { "$ref": "#/$defs/score_1_to_5" }
+                },
+                "required": ["upstream_leverage", "optionality", "asymmetric_upside", "downside_survivability", "reversibility", "learning_rate", "identity_alignment", "market_reality", "energy_truth", "regret_minimization"]
+              },
+              "total_score": { "type": "integer" },
+              "summary": { "type": "string" },
+              "main_risk": { "type": "string" }
+            },
+            "required": ["option_id", "scores", "total_score", "summary", "main_risk"]
+          }
+        },
+        "evaluation_notes": { "type": "string" }
+      },
+      "required": ["evaluations", "evaluation_notes"]
+    },
+    "non_consensus_insight": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "consensus_view": { "type": "string" },
+        "why_consensus_may_be_wrong": { "type": "string" },
+        "non_consensus_view": { "type": "string" },
+        "key_bet": { "type": "string" },
+        "what_would_make_this_wrong": { "type": "array", "items": { "type": "string" } },
+        "edge_needed": { "type": "string" },
+        "falsification_tests": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["consensus_view", "why_consensus_may_be_wrong", "non_consensus_view", "key_bet", "what_would_make_this_wrong", "edge_needed", "falsification_tests"]
+    },
+    "contrarian_challenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "understood_recommendation": { "type": "string" },
+        "strongest_objection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "objection": { "type": "string" },
+            "category": {
+              "type": "string",
+              "enum": ["practicality", "constraint", "alternative_frame", "opportunity_cost", "downside", "behavioral_reality", "external_reality", "simpler_alternative"]
+            },
+            "why_it_could_defeat_the_recommendation": { "type": "string" },
+            "evidence_needed_to_resolve": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["objection", "category", "why_it_could_defeat_the_recommendation", "evidence_needed_to_resolve"]
+        },
+        "supporting_objections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "objection": { "type": "string" },
+              "category": {
+                "type": "string",
+                "enum": ["practicality", "constraint", "alternative_frame", "opportunity_cost", "downside", "behavioral_reality", "external_reality", "simpler_alternative"]
+              },
+              "severity": { "$ref": "#/$defs/rating" },
+              "note": { "type": "string" }
+            },
+            "required": ["objection", "category", "severity", "note"]
+          }
+        },
+        "alternative_recommendation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "short_answer": { "type": "string" },
+            "decision_type": { "$ref": "#/$defs/recommendation_type" },
+            "why_it_may_be_better": { "type": "string" }
+          },
+          "required": ["short_answer", "decision_type", "why_it_may_be_better"]
+        },
+        "stress_test_result": {
+          "type": "string",
+          "enum": ["recommendation_survives", "recommendation_needs_revision", "recommendation_defeated", "insufficient_information"]
+        },
+        "practicality_score": { "$ref": "#/$defs/score_1_to_5" },
+        "final_critique_summary": { "type": "string" }
+      },
+      "required": ["understood_recommendation", "strongest_objection", "supporting_objections", "alternative_recommendation", "stress_test_result", "practicality_score", "final_critique_summary"]
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "short_answer": { "type": "string" },
+        "decision_type": { "$ref": "#/$defs/recommendation_type" },
+        "confidence": { "$ref": "#/$defs/rating" },
+        "core_reason": { "type": "string" },
+        "key_bet": { "type": "string" },
+        "strongest_contrarian_objection": { "type": "string" },
+        "response_to_contrarian": { "type": "string" },
+        "changed_after_contrarian_review": { "type": "boolean" },
+        "change_log": { "type": "array", "items": { "type": "string" } },
+        "recommended_action_plan": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "step": { "type": "integer" },
+              "action": { "type": "string" },
+              "timeframe": { "type": "string" },
+              "success_condition": { "type": "string" }
+            },
+            "required": ["step", "action", "timeframe", "success_condition"]
+          }
+        },
+        "do_not_do": { "type": "array", "items": { "type": "string" } },
+        "watch_signals": { "type": "array", "items": { "type": "string" } },
+        "kill_criteria": { "type": "array", "items": { "type": "string" } },
+        "what_would_make_this_wrong": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["short_answer", "decision_type", "confidence", "core_reason", "key_bet", "strongest_contrarian_objection", "response_to_contrarian", "changed_after_contrarian_review", "change_log", "recommended_action_plan", "do_not_do", "watch_signals", "kill_criteria", "what_would_make_this_wrong"]
+    },
+    "anti_noise_guardrail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "user_question": { "type": "string" },
+        "classification": { "type": "string", "enum": ["upstream", "downstream", "mixed"] },
+        "is_downstream_question": { "type": "boolean" },
+        "related_upstream_decision": { "type": "string" },
+        "should_answer_directly": { "type": "boolean" },
+        "better_focus": { "type": "string" },
+        "response_strategy": { "type": "string", "enum": ["answer", "redirect", "answer_with_warning"] },
+        "draft_response": { "type": "string" }
+      },
+      "required": ["user_question", "classification", "is_downstream_question", "related_upstream_decision", "should_answer_directly", "better_focus", "response_strategy", "draft_response"]
+    }
+  }
+}
