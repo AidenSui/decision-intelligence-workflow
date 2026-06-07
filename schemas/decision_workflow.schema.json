@@ -55,6 +55,10 @@
       "type": "string",
       "enum": ["commit", "test", "delay", "reject", "redesign"]
     },
+    "output_mode": {
+      "type": "string",
+      "enum": ["user_facing", "structured_debug", "json_schema"]
+    },
     "raw_input_parse": {
       "type": "object",
       "additionalProperties": false,
@@ -375,6 +379,19 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "output_mode": { "$ref": "#/$defs/output_mode" },
+        "user_summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "recommendation_type": { "$ref": "#/$defs/recommendation_type" },
+            "one_sentence_recommendation": { "type": "string" },
+            "core_reason": { "type": "string" },
+            "biggest_risk_or_objection": { "type": "string" },
+            "first_action": { "type": "string" }
+          },
+          "required": ["recommendation_type", "one_sentence_recommendation", "core_reason", "biggest_risk_or_objection", "first_action"]
+        },
         "short_answer": { "type": "string" },
         "decision_type": { "$ref": "#/$defs/recommendation_type" },
         "confidence": { "$ref": "#/$defs/rating" },
@@ -393,6 +410,34 @@
             "possible_outcomes": { "type": "array", "items": { "type": "string" } }
           },
           "required": ["date_or_timeframe", "gate_question", "possible_outcomes"]
+        },
+        "prioritized_next_actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "immediate": {
+              "type": "array",
+              "maxItems": 3,
+              "items": { "type": "string" }
+            },
+            "near_term": {
+              "type": "array",
+              "maxItems": 3,
+              "items": { "type": "string" }
+            },
+            "later_or_optional": {
+              "type": "array",
+              "maxItems": 3,
+              "items": { "type": "string" }
+            }
+          },
+          "required": ["immediate", "near_term", "later_or_optional"]
+        },
+        "emotional_acknowledgement": {
+          "type": ["string", "null"]
+        },
+        "communication_script": {
+          "type": ["string", "null"]
         },
         "recommended_action_plan": {
           "type": "array",

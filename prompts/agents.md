@@ -152,7 +152,21 @@ Give a clear recommendation. It must be one of:
 - `reject`
 - `redesign`
 
-Consume the contrarian challenge directly. If it defeats the emerging recommendation, revise the recommendation. If it only weakens or narrows it, explain the modification. Include the minimum action plan, decision gate, watch signals, kill criteria, and falsification conditions needed to make the advice usable.
+Consume the contrarian challenge directly. If it defeats the emerging recommendation, revise the recommendation. If it only weakens or narrows it, explain the modification.
+
+Default to a user-facing recommendation rather than internal workflow output. Start with a short `User Summary`, use natural headings instead of layer labels, and keep the visible analysis focused on what the user needs to understand and do next.
+
+Match the action section to the recommendation type:
+
+- `commit`: execution plan.
+- `test`: test plan.
+- `delay`: waiting conditions or information plan.
+- `reject`: rejection rationale and alternative moves.
+- `redesign`: redesign direction and new option structure.
+
+Do not turn every recommendation into a test plan. Use a test plan only when the recommendation type is `test` or validation is clearly necessary before commitment.
+
+Prioritize next actions by time or order, with no more than 3 items per group. Include emotional acknowledgement when the decision contains burnout, anxiety, identity pressure, financial fear, relationship pressure, or health risk. Include a short communication script when the decision materially affects another key person.
 
 ### Output
 

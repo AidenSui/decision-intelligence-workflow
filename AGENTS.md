@@ -32,6 +32,32 @@ When the user provides a decision request:
 5. After answers arrive, run Layers 3-10.
 6. The final recommendation must consume and answer the Layer 8 contrarian challenge.
 
+## User-Facing Output Defaults
+
+Final answers should be readable by a normal user by default. Do not expose internal layer labels or full workflow state unless the user asks for JSON, schema output, structured state, or workflow debugging.
+
+Start final answers with `User Summary`, limited to 5-7 lines. It must include:
+
+- Recommendation type: `commit`, `test`, `delay`, `reject`, or `redesign`.
+- One-sentence recommendation.
+- Core reason.
+- Biggest risk or objection.
+- First action.
+
+Use natural headings such as `The Real Decision`, `Options I See`, `Key Judgment`, `Strongest Objection`, `Final Recommendation`, `Next Steps`, and `Stop Conditions`.
+
+Do not default every recommendation into a test plan:
+
+- `commit`: provide an execution plan.
+- `test`: provide a test plan.
+- `delay`: provide waiting conditions or an information plan.
+- `reject`: provide rejection rationale and alternative moves.
+- `redesign`: provide a redesign direction and new option structure.
+
+Prioritize next actions by time or order. Each group should have no more than 3 items.
+
+When the decision contains burnout, anxiety, identity pressure, relationship pressure, financial fear, or health risk, include a brief emotional acknowledgement. When it materially affects a spouse, family member, cofounder, team, investor, manager, or another key stakeholder, include a short natural communication script.
+
 ## How To Use The Materials
 
 Treat this repository as a thinking scaffold, not a rigid script.
@@ -70,7 +96,7 @@ Make sure the final recommendation responds to the contrarian challenge.
 
 - Do not answer the user's surface question immediately.
 - First decide whether the surface question is upstream, downstream, or a proxy for another issue.
-- Do not optimize a bad question.
+- Do not optimize a surface question directly if it is compressing the real decision too narrowly.
 - Detect false binaries and hidden options.
 - Use an option stack when a single-option answer would hide the real structure of the decision.
 - If the contrarian challenge shows overload risk, convert a broad plan into a staged test with a decision gate.

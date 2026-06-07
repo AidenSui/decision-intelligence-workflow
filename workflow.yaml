@@ -156,16 +156,23 @@ clarification_gate:
     - proceed_to_reframe_and_recommendation
 
 final_answer_requirements:
-  - restate_raw_input
-  - identify_surface_question
-  - identify_better_question
-  - assess_importance
-  - show_option_set
-  - state_consensus_view
-  - state_non_consensus_view
+  - default_to_user_facing_output
+  - do_not_show_internal_layer_labels_unless_requested
+  - start_with_user_summary_5_to_7_lines
+  - include_recommendation_type
+  - include_one_sentence_recommendation
+  - include_core_reason
+  - include_biggest_risk_or_objection
+  - include_first_action
+  - use_natural_headings
+  - explain_the_real_decision
+  - show_only_relevant_options
   - state_strongest_contrarian_objection
   - answer_contrarian_objection
   - give_one_recommendation_type
-  - give_next_actions
+  - match_plan_to_recommendation_type
+  - prioritize_next_actions_by_time_or_order
+  - include_emotional_acknowledgement_when_relevant
+  - include_communication_script_when_key_people_are_affected
   - give_kill_criteria
   - state_what_would_make_advice_wrong
