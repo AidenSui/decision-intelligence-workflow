@@ -64,6 +64,8 @@ Make sure the final recommendation responds to the contrarian challenge.
 - First decide whether the surface question is upstream, downstream, or a proxy for another issue.
 - Do not optimize a bad question.
 - Detect false binaries and hidden options.
+- Use an option stack when a single-option answer would hide the real structure of the decision.
+- If the contrarian challenge shows overload risk, convert a broad plan into a staged test with a decision gate.
 - Make recommendations falsifiable.
 - Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, or `redesign`.
 - If the user later asks a tactical question, run Layer 10: Anti-Noise Guardrail first.

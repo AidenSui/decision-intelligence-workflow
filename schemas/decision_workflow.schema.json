@@ -79,6 +79,19 @@
         "known_background": { "type": "array", "items": { "type": "string" } },
         "assumptions_to_test": { "type": "array", "items": { "type": "string" } },
         "missing_information": { "type": "array", "items": { "type": "string" } },
+        "hard_constraints": { "type": "array", "items": { "type": "string" } },
+        "soft_constraints": { "type": "array", "items": { "type": "string" } },
+        "execution_capacity_estimate": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "available_time": { "type": "string" },
+            "energy_level": { "$ref": "#/$defs/rating" },
+            "capacity_risk": { "$ref": "#/$defs/rating" },
+            "note": { "type": "string" }
+          },
+          "required": ["available_time", "energy_level", "capacity_risk", "note"]
+        },
         "decision_importance_assessment": {
           "type": "object",
           "additionalProperties": false,
@@ -190,6 +203,18 @@
             "recommended_frame": { "type": "string" }
           },
           "required": ["core_tradeoff", "real_options", "false_binary_detected", "recommended_frame"]
+        },
+        "strategic_frame": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "one_sentence_frame": { "type": "string" },
+            "domains_mixed_in_original_question": { "type": "array", "items": { "type": "string" } },
+            "primary_optimization_target": { "type": "string" },
+            "secondary_optimization_targets": { "type": "array", "items": { "type": "string" } },
+            "single_option_or_stack": { "type": "string", "enum": ["single_option", "option_stack"] }
+          },
+          "required": ["one_sentence_frame", "domains_mixed_in_original_question", "primary_optimization_target", "secondary_optimization_targets", "single_option_or_stack"]
         }
       },
       "required": ["original_question", "is_original_question_good", "why_or_why_not", "better_question", "upstream_decision", "downstream_noise", "decision_frame"]
@@ -201,6 +226,20 @@
         "option_set": {
           "type": "array",
           "items": { "$ref": "#/$defs/option" }
+        },
+        "recommended_option_stack": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "is_stack_recommended": { "type": "boolean" },
+            "foundation_strategy": { "type": "string" },
+            "primary_track": { "type": "string" },
+            "secondary_track": { "type": "string" },
+            "experiment_track": { "type": "string" },
+            "rejected_tracks": { "type": "array", "items": { "type": "string" } },
+            "why_stack_beats_single_option": { "type": "string" }
+          },
+          "required": ["is_stack_recommended", "foundation_strategy", "primary_track", "secondary_track", "experiment_track", "rejected_tracks", "why_stack_beats_single_option"]
         },
         "hidden_options": { "type": "array", "items": { "type": "string" } },
         "bad_options_to_avoid": { "type": "array", "items": { "type": "string" } }
@@ -345,6 +384,16 @@
         "response_to_contrarian": { "type": "string" },
         "changed_after_contrarian_review": { "type": "boolean" },
         "change_log": { "type": "array", "items": { "type": "string" } },
+        "decision_gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "date_or_timeframe": { "type": "string" },
+            "gate_question": { "type": "string" },
+            "possible_outcomes": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["date_or_timeframe", "gate_question", "possible_outcomes"]
+        },
         "recommended_action_plan": {
           "type": "array",
           "items": {

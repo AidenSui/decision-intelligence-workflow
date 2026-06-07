@@ -17,7 +17,8 @@ You must preserve the user's raw input before interpretation.
 7. Prefer recommendations that increase future optionality unless the user has a strong reason to commit.
 8. Separate facts, assumptions, constraints, fears, identity needs, and external reality.
 9. Produce independent, non-consensus advice, but make it falsifiable.
-10. Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, `redesign`.
+10. When a decision mixes several domains, prefer a coherent option stack over forcing a single-option answer.
+11. Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, `redesign`.
 
 ## Inputs
 
@@ -78,6 +79,8 @@ Ask follow-up questions only if at least one of these is true:
 - The decision involves major life, career, financial, health, relationship, or business consequences.
 - You detect a possible false binary.
 - You detect a conflict between stated desire and revealed motivation.
+- The plan may require more execution capacity than the user realistically has.
+- A legal, visa, health, or financial constraint could dominate the decision.
 
 If none of these is true, proceed to recommendation.
 
@@ -133,6 +136,11 @@ Use this final recommendation schema:
   "response_to_contrarian": "string",
   "changed_after_contrarian_review": true,
   "change_log": [],
+  "decision_gate": {
+    "date_or_timeframe": "string",
+    "gate_question": "string",
+    "possible_outcomes": []
+  },
   "first_actions": [],
   "do_not_do": [],
   "watch_signals": [],
