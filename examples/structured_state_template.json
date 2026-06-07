@@ -1,0 +1,96 @@
+{
+  "session_id": "example-template",
+  "created_at": "YYYY-MM-DD",
+  "raw_inputs": [
+    {
+      "timestamp": "YYYY-MM-DDTHH:MM:SSZ",
+      "source": "initial_user_input",
+      "raw_text": "I am deciding whether to continue with Option A, switch to Option B, or redesign the situation entirely. The situation has meaningful upside, but it also has repeated costs and uncertainty."
+    }
+  ],
+  "raw_input_parse": {
+    "raw_input": "I am deciding whether to continue with Option A, switch to Option B, or redesign the situation entirely. The situation has meaningful upside, but it also has repeated costs and uncertainty.",
+    "decision_candidate": {
+      "plain_language_summary": "The user is deciding whether to continue, stop, switch, or redesign a high-impact situation.",
+      "decision_type": "other",
+      "time_horizon": "medium_term",
+      "apparent_options": ["Continue current path", "Switch to another path", "Stop", "Redesign the situation"],
+      "implicit_options": ["Run a bounded viability check", "Change the terms before deciding", "Wait only for specific evidence"]
+    },
+    "hidden_dilemma": "The real dilemma is whether more time will create useful evidence or merely extend an already-disproven pattern.",
+    "stated_desires": ["Preserve meaningful upside", "Avoid unnecessary loss", "Make a clear decision"],
+    "stated_fears": ["Stopping too early", "Continuing too long", "Mistaking discomfort for evidence"],
+    "constraints": ["Limited time", "Limited attention", "Meaningful downside if the decision is mishandled"],
+    "known_background": ["The situation has both upside and repeated costs"],
+    "assumptions_to_test": ["The situation is still viable", "The required change is possible", "A bounded test will create new evidence"],
+    "missing_information": ["Disqualifiers", "Prior attempt pattern", "Required ownership", "Non-negotiables", "Remaining value"],
+    "hard_constraints": [],
+    "soft_constraints": [],
+    "execution_capacity_estimate": {
+      "available_time": "Unknown",
+      "energy_level": "medium",
+      "capacity_risk": "medium",
+      "note": "Capacity must be clarified before recommending a complex plan."
+    },
+    "decision_importance_assessment": {
+      "importance": "high",
+      "is_potentially_upstream": true,
+      "why": "The decision affects future optionality, resource allocation, and repeated downstream choices.",
+      "risk_of_overthinking": "medium",
+      "risk_of_underthinking": "high"
+    },
+    "better_questions": [
+      "Is this situation still viable enough to deserve more time?",
+      "Would a bounded test create new evidence, or extend an already-disproven pattern?",
+      "What would make continuation unacceptable?"
+    ],
+    "clarification_needed": [
+      "Are there any disqualifiers?",
+      "How many times has this pattern already repeated?",
+      "Who or what must change for the situation to improve?",
+      "What non-negotiables define whether continuing is acceptable?",
+      "What remaining value is still worth preserving?"
+    ]
+  },
+  "recommendation": {
+    "output_mode": "user_facing",
+    "user_summary": {
+      "recommendation_type": "test",
+      "one_sentence_recommendation": "Run a bounded viability test before committing, stopping, or redesigning.",
+      "core_reason": "More time is justified only if it can produce new evidence.",
+      "biggest_risk_or_objection": "A test can become disguised delay if standards are vague.",
+      "first_action": "Define the non-negotiable continuation conditions."
+    },
+    "short_answer": "Run a bounded viability test only if the situation has no disqualifiers and can produce new evidence.",
+    "decision_type": "test",
+    "confidence": "medium",
+    "core_reason": "The situation has possible remaining value, but continued investment needs evidence.",
+    "key_bet": "A viable situation should produce observable signal within a bounded window.",
+    "strongest_contrarian_objection": "The test may simply extend an already-disproven pattern.",
+    "response_to_contrarian": "The test is valid only if disqualifiers are absent, standards are explicit, and the stop-loss is pre-defined.",
+    "changed_after_contrarian_review": true,
+    "change_log": ["Added a viability check before recommending any test plan."],
+    "viability_check": {
+      "disqualifiers": [],
+      "prior_attempt_pattern": "Unknown",
+      "real_desire_vs_avoidance": "Unknown",
+      "ownership_required": "The required source of change must be named.",
+      "non_negotiables": [],
+      "remaining_value": "Unknown",
+      "is_viable_to_test": true,
+      "note": "This remains conditional until missing information is resolved."
+    },
+    "recommended_action_plan": [
+      {
+        "step": 1,
+        "action": "Define non-negotiables and disqualifiers.",
+        "timeframe": "48 hours",
+        "success_condition": "The user can name what would make continuation unacceptable."
+      }
+    ],
+    "do_not_do": ["Do not continue on vague hope", "Do not run a test without stop conditions"],
+    "watch_signals": ["Evidence quality", "Repeated pattern", "Capacity cost"],
+    "kill_criteria": ["Disqualifier appears", "No required ownership", "Same failed pattern repeats"],
+    "what_would_make_this_wrong": ["The situation already has decisive evidence", "Testing creates unacceptable downside"]
+  }
+}

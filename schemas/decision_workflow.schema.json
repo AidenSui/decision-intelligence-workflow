@@ -49,7 +49,7 @@
     },
     "decision_type": {
       "type": "string",
-      "enum": ["career", "business", "relationship", "location", "money", "identity", "health", "education", "family", "other"]
+      "description": "An optional domain label inferred from the user's language. Keep it abstract when possible; do not anchor the workflow to a fixed set of decision domains."
     },
     "recommendation_type": {
       "type": "string",
