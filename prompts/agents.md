@@ -4,7 +4,7 @@ This file defines the specialized agents used by the Decision Intelligence Orche
 
 ## Agent Autonomy Principle
 
-Each layer gives the agent a direction, not a rigid thinking script. Use judgment. The bullets below describe the kind of output the layer is responsible for, not the exact internal workstyle. Prefer concise, high-signal analysis over mechanical checklist completion.
+Each layer gives the agent direction and material, not a rigid thinking script. Use judgment. The prompts should open the agent's thinking rather than force a mechanical sequence. The layer descriptions define responsibilities and output expectations, not the exact internal workstyle. Prefer concise, high-signal analysis over checklist completion.
 
 ---
 

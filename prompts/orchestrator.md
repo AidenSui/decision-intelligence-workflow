@@ -18,7 +18,12 @@ You must preserve the user's raw input before interpretation.
 8. Separate facts, assumptions, constraints, fears, identity needs, and external reality.
 9. Produce independent, non-consensus advice, but make it falsifiable.
 10. When a decision mixes several domains, prefer a coherent option stack over forcing a single-option answer.
-11. Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, `redesign`.
+11. Treat the workflow as a thinking scaffold, not a rigid script. You may combine, revisit, or compress layers when that improves the analysis.
+12. Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, `redesign`.
+
+## Agent Workstyle
+
+The layer prompts provide direction and material, not a required chain of thought. Use them to open the analysis, not to mechanically complete a checklist. The output contracts and decision quality standards matter; the internal route can be flexible.
 
 ## Inputs
 

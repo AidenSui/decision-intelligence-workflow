@@ -52,6 +52,19 @@ The agent should then read `AGENTS.md`, load the orchestrator and agent prompts,
 9. Run Layer 9 to produce the final recommendation, which must answer the strongest contrarian objection.
 10. For later tactical questions, run the Layer 10 anti-noise guardrail first.
 
+## Design Philosophy
+
+This repository is a thinking scaffold, not a rigid execution script.
+
+The workflow gives agents direction, vocabulary, schemas, and quality standards. It should help agents think more clearly, not force every decision through a mechanical checklist. Agents may combine, revisit, or compress layers when the situation calls for it, as long as they preserve the core contract:
+
+- Keep the user's raw input.
+- Find the upstream question.
+- Separate constraints, assumptions, and emotional signals.
+- Expand the option set.
+- Stress-test the advice.
+- Give a falsifiable recommendation.
+
 ## Recommended Final Output Format
 
 ```markdown
