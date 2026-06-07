@@ -29,9 +29,18 @@ Feeling tired and lonely in the relationship is real information. It does not au
 
 ## Key Judgment
 
-I would not optimize this as a simple "stay or leave" question yet, because that framing may hide the most important variable: whether your partner can participate in repair when the standards are specific.
+I would not optimize this as a simple "stay or leave" question yet, because that framing may hide the most important variable: whether this is still a viable repair situation or an already-disproven pattern.
 
-The best next move is a bounded test with clear criteria. If the pattern changes, you gain evidence. If it does not, you gain permission to stop negotiating with hope.
+The best next move is a bounded test only if the situation is still viable enough to deserve one. If there are safety risks, many prior failed repair cycles, no real ownership from your partner, or no remaining desire to repair, another test would mostly extend the same pattern.
+
+## Viability Check
+
+- Disqualifiers: if there is intimidation, coercive control, threats, contempt, or emotional unsafety, do not run a repair test.
+- Prior attempts: if this has already repeated through many cycles of apology, hope, and relapse, the burden of proof shifts against another test.
+- Real desire vs avoidance: if you no longer want the relationship and only fear leaving, the honest recommendation moves toward `reject` or `redesign`.
+- Ownership required: your partner must be able to name their part in the pattern and agree to observable behavior changes.
+- Non-negotiables: less criticism, less defensiveness, repair after conflict, and no escalation into contempt or intimidation.
+- Remaining value: a test is worth running only if there is still care, shared history, and a plausible path back to emotional safety.
 
 ## Strongest Objection
 
@@ -43,7 +52,7 @@ That objection is valid. The test only makes sense if it has concrete behaviors,
 
 Recommendation type: `test`
 
-Run a 30-day relationship repair test before making a final stay-or-leave decision.
+Run a 30-day relationship repair test before making a final stay-or-leave decision, but only if the viability check passes.
 
 The bet is: if this relationship is repairable, there should be visible movement within 30 days in how conflict starts, how repair happens, and whether you feel emotionally safer. If there is no visible change, the issue is not just communication style; it is a repeated relational pattern.
 
@@ -53,13 +62,13 @@ The bet is: if this relationship is repairable, there should be visible movement
 
 - Write down the three behaviors that must change for the relationship to feel viable.
 - Decide your non-negotiable stop condition before talking, so the conversation does not become improvisation.
-- Ask for one calm conversation, not a verdict conversation.
+- Ask yourself whether you still want repair, or mainly fear the consequences of leaving.
 
 ### 7 Days
 
+- Ask for one calm conversation, not a verdict conversation.
 - Have the conversation and propose a 30-day repair window.
 - Agree on 2-3 observable behaviors, such as no insults, no stonewalling, repair within 24 hours, or one weekly check-in.
-- Decide whether outside help is needed, such as couples counseling or a structured conversation guide.
 
 ### 30 Days
 

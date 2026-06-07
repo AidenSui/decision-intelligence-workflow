@@ -167,6 +167,7 @@ final_answer_requirements:
   - use_natural_headings
   - explain_the_real_decision
   - show_only_relevant_options
+  - check_viability_before_test_or_delay
   - state_strongest_contrarian_objection
   - answer_contrarian_objection
   - give_one_recommendation_type
