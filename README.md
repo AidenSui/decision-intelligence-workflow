@@ -10,6 +10,7 @@ This workflow does not automatically answer the user's surface question. It firs
 
 ## File Structure
 
+- `AGENTS.md`: Start instructions for coding agents or AI assistants using this repository.
 - `prompts/orchestrator.md`: Main orchestrator prompt for state management, routing, follow-up questions, synthesis, and anti-noise control.
 - `prompts/agents.md`: Formal prompt library for each layer agent, including the contrarian challenge agent.
 - `schemas/decision_workflow.schema.json`: Complete JSON schema for structured inputs and outputs.
@@ -17,17 +18,39 @@ This workflow does not automatically answer the user's surface question. It firs
 - `templates/state_template.json`: State template for each new decision session.
 - `examples/sample_run.json`: A complete example from raw input to recommendation.
 
+## Quick Start After Pulling This Repo
+
+After cloning or pulling this repository, a user can ask an agent:
+
+```text
+Read AGENTS.md and use the Decision Intelligence Workflow in this repo.
+
+Decision:
+...
+
+Background:
+...
+
+Current options:
+...
+
+Start with Layer 1 and Layer 2 only. Do not give a final recommendation yet.
+```
+
+The agent should then read `AGENTS.md`, load the orchestrator and agent prompts, and begin the workflow from the current repository contents.
+
 ## Recommended Usage
 
-1. Use `prompts/orchestrator.md` as the main agent system prompt.
-2. Use `prompts/agents.md` as the prompt library for sub-agents or tool agents.
-3. For every new decision request, run the Layer 1 parser first.
-4. If material information is missing, run the Layer 2 deep dive question agent before giving advice.
-5. After the user answers, store the raw answers in Layer 3.
-6. Then run Layers 4-7 to produce the reframe, option set, evaluation, and non-consensus insight.
-7. Run Layer 8 to challenge the emerging recommendation from a skeptical, practical, adversarial point of view.
-8. Run Layer 9 to produce the final recommendation, which must answer the strongest contrarian objection.
-9. For later tactical questions, run the Layer 10 anti-noise guardrail first.
+1. Read `AGENTS.md` first if you are an AI agent operating inside this repository.
+2. Use `prompts/orchestrator.md` as the main agent system prompt.
+3. Use `prompts/agents.md` as the prompt library for sub-agents or tool agents.
+4. For every new decision request, run the Layer 1 parser first.
+5. If material information is missing, run the Layer 2 deep dive question agent before giving advice.
+6. After the user answers, store the raw answers in Layer 3.
+7. Then run Layers 4-7 to produce the reframe, option set, evaluation, and non-consensus insight.
+8. Run Layer 8 to challenge the emerging recommendation from a skeptical, practical, adversarial point of view.
+9. Run Layer 9 to produce the final recommendation, which must answer the strongest contrarian objection.
+10. For later tactical questions, run the Layer 10 anti-noise guardrail first.
 
 ## Recommended Final Output Format
 
