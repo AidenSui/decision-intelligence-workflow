@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://local/decision-workflow/decision_workflow.schema.json",
+  "$id": "https://local/decision-intelligence-workflow/decision_workflow.schema.json",
   "title": "Decision Intelligence Workflow Schema",
   "type": "object",
   "additionalProperties": false,
