@@ -151,8 +151,5 @@ A good output must:
 - Detect false binaries and hidden options.
 - Produce a non-consensus view and explain what could make it wrong.
 - Stress-test the recommendation with a contrarian challenge before finalizing it.
-- Use an option stack when the real decision spans several domains and cannot be reduced to one clean choice.
-- Convert broad strategy into a staged test when the contrarian challenge exposes overload risk.
-- Include a time-bounded decision gate for staged tests.
 - Give an explicit recommendation instead of generic "it depends" advice.
 - Detect whether later tactical questions are upstream decisions or downstream noise.
