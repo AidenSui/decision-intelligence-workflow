@@ -28,6 +28,23 @@ state_file_shape:
   contrarian_challenge: object
   recommendation: object
   anti_noise_guardrail: object
+  subagent_trace: []
+
+execution_mode:
+  default: strict_subagent
+  strict_subagent:
+    description: >
+      The orchestrator must invoke independent sub-agents for layer execution.
+      A single assistant instance may not claim strict execution.
+    requirements:
+      - invoke_subagent_per_layer
+      - record_subagent_trace
+      - do_not_claim_subagents_without_actual_invocation
+      - stop_if_subagent_tooling_unavailable
+  fallback:
+    name: single_agent_approximation
+    allowed_only_if_user_accepts: true
+    must_be_labeled_non_strict: true
 
 layers:
   - id: layer_1

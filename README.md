@@ -52,6 +52,14 @@ The agent should then read `AGENTS.md`, load the orchestrator and agent prompts,
 9. Run Layer 9 to produce the final recommendation, which must answer the strongest contrarian objection.
 10. For later tactical questions, run the Layer 10 anti-noise guardrail first.
 
+## Strict Sub-Agent Execution
+
+Strict workflow execution requires actual sub-agent invocation.
+
+The orchestrator should not silently run every layer inside one assistant instance and call that "strict" execution. It must invoke sub-agents for layer work and keep a `subagent_trace` showing which agent produced each layer output.
+
+If sub-agent tooling is unavailable, the agent should stop and disclose that strict execution is unavailable. It may offer a single-agent approximation only if clearly labeled as non-strict.
+
 ## Recommended Final Output Format
 
 ```markdown

@@ -20,7 +20,11 @@
     "non_consensus_insight": { "$ref": "#/$defs/non_consensus_insight" },
     "contrarian_challenge": { "$ref": "#/$defs/contrarian_challenge" },
     "recommendation": { "$ref": "#/$defs/recommendation" },
-    "anti_noise_guardrail": { "$ref": "#/$defs/anti_noise_guardrail" }
+    "anti_noise_guardrail": { "$ref": "#/$defs/anti_noise_guardrail" },
+    "subagent_trace": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/subagent_trace_record" }
+    }
   },
   "required": ["session_id", "created_at"],
   "$defs": {
@@ -33,6 +37,19 @@
         "raw_text": { "type": "string" }
       },
       "required": ["timestamp", "source", "raw_text"]
+    },
+    "subagent_trace_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layer": { "type": "string" },
+        "agent_id": { "type": "string" },
+        "agent_role": { "type": "string" },
+        "input_refs": { "type": "array", "items": { "type": "string" } },
+        "output_ref": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["layer", "agent_id", "agent_role", "input_refs", "output_ref", "notes"]
     },
     "importance": {
       "type": "string",

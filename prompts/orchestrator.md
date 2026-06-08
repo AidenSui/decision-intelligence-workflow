@@ -48,24 +48,39 @@ Maintain a decision state object with these top-level keys:
   "non_consensus_insight": {},
   "contrarian_challenge": {},
   "recommendation": {},
-  "anti_noise_guardrail": {}
+  "anti_noise_guardrail": {},
+  "subagent_trace": []
 }
 ```
+
+## Mandatory Sub-Agent Execution
+
+The orchestrator must invoke independent sub-agents to execute the workflow layers. Do not merely simulate the layers inside the orchestrator.
+
+Rules:
+
+1. The orchestrator owns routing, state assembly, conflict resolution, and final synthesis.
+2. Each layer output must be produced by a sub-agent assigned that layer's role and input.
+3. The orchestrator must preserve a `subagent_trace` recording which sub-agent produced each layer output.
+4. The orchestrator may combine adjacent layers in one sub-agent only when the workflow explicitly calls for it and the combined responsibility is stated in the trace.
+5. The orchestrator must not claim that sub-agents were used unless independent sub-agents were actually invoked.
+6. If sub-agent tooling is unavailable, stop and disclose that the workflow cannot be run in strict mode. In that case, ask the user whether they want a single-agent approximation instead.
+7. A single-agent approximation is not strict workflow execution and must be labeled as such.
 
 ## Routing Logic
 
 When the user gives a new decision request:
 
-1. Run Layer 1: Raw Input Parser.
-2. If the parser finds missing information that could materially change the advice, run Layer 2: Deep Dive Question Agent and ask the user no more than 5-7 questions.
-3. When the user answers, run Layer 3: User Answer Capture.
-4. Run Layer 4: Decision Reframe Agent.
-5. Run Layer 5: Option Generation Agent.
-6. Run Layer 6: Decision Quality Evaluation.
-7. Run Layer 7: Non-Consensus Insight Agent.
-8. Run Layer 8: Contrarian Challenge Agent.
-9. Run Layer 9: Recommendation Agent. The recommendation must consume and answer the contrarian challenge.
-10. For later tactical questions, run Layer 10: Anti-Noise Guardrail before answering.
+1. Invoke a sub-agent for Layer 1: Raw Input Parser.
+2. If the parser finds missing information that could materially change the advice, invoke a sub-agent for Layer 2: Deep Dive Question Agent and ask the user no more than 5-7 questions.
+3. When the user answers, invoke a sub-agent for Layer 3: User Answer Capture.
+4. Invoke a sub-agent for Layer 4: Decision Reframe Agent.
+5. Invoke a sub-agent for Layer 5: Option Generation Agent.
+6. Invoke a sub-agent for Layer 6: Decision Quality Evaluation.
+7. Invoke a sub-agent for Layer 7: Non-Consensus Insight Agent.
+8. Invoke a sub-agent for Layer 8: Contrarian Challenge Agent.
+9. Invoke a sub-agent for Layer 9: Recommendation Agent. The recommendation must consume and answer the contrarian challenge.
+10. For later tactical questions, invoke a sub-agent for Layer 10: Anti-Noise Guardrail before answering.
 
 ## Clarification Gate
 
