@@ -68,70 +68,82 @@ The workflow gives agents direction, vocabulary, schemas, and quality standards.
 ## Recommended Final Output Format
 
 ```markdown
-## User Summary
+## 1. Restate The Problem
 
-- Recommendation type: test
-- Recommendation: ...
-- Core reason: ...
-- Biggest risk or objection: ...
-- First action: ...
+Raw input:
+> ...
 
-## The Real Decision
+My understanding:
+...
+
+## 2. The Surface Question
 
 ...
 
-## Options I See
+## 3. The Better Question
 
 ...
 
-## Key Judgment
+## 4. Does This Decision Matter?
 
+Conclusion:
 ...
 
-## Strongest Objection
-
+Reason:
 ...
 
-## Final Recommendation
+## 5. Follow-Up Questions
 
+1. ...
+2. ...
+3. ...
+
+## 6. Option Set
+
+A. ...
+B. ...
+C. ...
+D. Hidden option: ...
+
+## 7. Non-Consensus View
+
+Most people would probably say:
 ...
 
-## Next Steps
+I do not fully agree because:
+...
 
-### 48 Hours
+The real variable I care about:
+...
 
-- ...
+## 8. Recommendation
 
-### 7 Days
+I recommend:
+...
 
-- ...
+Confidence:
+...
 
-### Later / Optional
+Reason:
+...
 
-- ...
+Strongest objection:
+...
 
-## Stop Conditions
+Why the recommendation still survives, or how it changed:
+...
 
+## 9. Next Actions
+
+1. ...
+2. ...
+3. ...
+
+## 10. Kill Or Reversal Criteria
+
+This recommendation should be overturned if:
 ...
 ```
-
-Internal layer labels should only be shown when the user explicitly asks for JSON, schema output, structured state, or workflow debugging.
-
-## Recommendation-Type Specific Plans
-
-Do not turn every recommendation into an experiment plan. Match the visible plan to the recommendation type:
-
-- `commit`: use an execution plan.
-- `test`: use a test plan.
-- `delay`: use waiting conditions or an information plan.
-- `reject`: use rejection rationale and alternative moves.
-- `redesign`: use redesign direction and a new option structure.
-
-## Emotional Acknowledgement And Communication Scripts
-
-If the decision clearly includes burnout, anxiety, identity pressure, relationship pressure, financial fear, or health risk, include 1-2 sentences acknowledging the emotional signal without letting it alone decide high-risk action.
-
-If the decision materially affects a spouse, family member, cofounder, team, investor, manager, or another key stakeholder, include a short `Communication Script` of 5-8 natural sentences.
 
 ## Every Recommendation Must Be One Of Five Types
 
@@ -139,7 +151,7 @@ If the decision materially affects a spouse, family member, cofounder, team, inv
 - `test`: Run a low-cost experiment first.
 - `delay`: Information is insufficient; wait for a specific trigger or signal.
 - `reject`: Do not do it.
-- `redesign`: The surface framing is too narrow; change the decision structure.
+- `redesign`: The user's question is wrong; change the decision structure.
 
 ## Quality Standard
 
@@ -155,8 +167,5 @@ A good output must:
 - Use an option stack when the real decision spans several domains and cannot be reduced to one clean choice.
 - Convert broad strategy into a staged test when the contrarian challenge exposes overload risk.
 - Include a time-bounded decision gate for staged tests.
-- Start final answers with a concise user summary.
-- Avoid exposing internal layer labels by default.
-- Prioritize next actions by time or order.
 - Give an explicit recommendation instead of generic "it depends" advice.
 - Detect whether later tactical questions are upstream decisions or downstream noise.
