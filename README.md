@@ -53,6 +53,8 @@ The agent should then read `AGENTS.md`, load the orchestrator and agent prompts,
 9. Run Layer 9 to produce the final recommendation, which must answer the strongest contrarian objection.
 10. For later tactical questions, run the Layer 10 anti-noise guardrail first.
 
+User-facing concision is a presentation choice, not a reasoning shortcut. For medium, high, or existential decisions, the agent should still run the full internal workflow unless the user explicitly asks for a quick answer.
+
 ## Design Philosophy
 
 This repository is a thinking scaffold, not a rigid execution script.
@@ -68,6 +70,8 @@ The workflow gives agents direction, vocabulary, schemas, and quality standards.
 - Give a falsifiable recommendation.
 
 Repository-level materials should stay abstract. Specific decision content belongs in private local runs or user-provided context, not in the reusable workflow itself.
+
+The strongest intermediate insight should not be hidden. If the workflow produces a sharp upstream reframe, show it in natural language even when internal layer labels are hidden.
 
 ## Recommended Final Output Format
 

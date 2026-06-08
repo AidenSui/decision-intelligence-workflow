@@ -156,6 +156,9 @@ clarification_gate:
     - proceed_to_reframe_and_recommendation
 
 final_answer_requirements:
+  - preserve_internal_depth_even_when_user_facing
+  - run_full_internal_workflow_for_medium_high_existential_decisions
+  - show_strong_upstream_reframe_when_it_is_the_key_insight
   - default_to_user_facing_output
   - do_not_show_internal_layer_labels_unless_requested
   - start_with_user_summary_5_to_7_lines
