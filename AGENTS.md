@@ -11,8 +11,7 @@ If a user asks you to "use this repo", "run this workflow", "help me make a deci
 - `workflow.yaml`: The execution order and gate logic.
 - `schemas/decision_workflow.schema.json`: The structured output schema.
 - `templates/state_template.json`: The starting state shape for a new decision session.
-- `examples/structured_state_template.json`: An abstract structured state example.
-- `examples/user_facing_acceptance_template.md`: An abstract user-facing output example.
+- `examples/sample_run.json`: A reference example for expected output quality.
 
 ## How To Start
 
@@ -36,8 +35,6 @@ When the user provides a decision request:
 ## User-Facing Output Defaults
 
 Final answers should be readable by a normal user by default. Do not expose internal layer labels or full workflow state unless the user asks for JSON, schema output, structured state, or workflow debugging.
-
-This is only a presentation rule. It must not reduce internal reasoning depth. For medium, high, or existential decisions, run the full internal workflow unless the user explicitly asks for a quick answer.
 
 Start final answers with `User Summary`, limited to 5-7 lines. It must include:
 
@@ -71,8 +68,6 @@ The output contracts matter more than the internal workstyle. Preserve raw input
 
 Keep repository-level materials abstract. Do not add examples, modules, or rules that are tied to a specific decision domain unless the user explicitly asks for a domain-specific extension.
 
-For high-impact or multi-domain decisions, preserve the best intermediate insight. If the upstream reframe is the most valuable part of the analysis, show it to the user in natural language before proceeding to options or final recommendation.
-
 ## User-Facing Starter Prompt
 
 The user can start the workflow with:
@@ -104,8 +99,6 @@ Make sure the final recommendation responds to the contrarian challenge.
 - Do not answer the user's surface question immediately.
 - First decide whether the surface question is upstream, downstream, or a proxy for another issue.
 - Do not optimize a surface question directly if it is compressing the real decision too narrowly.
-- Do not let concise final-answer formatting become shallow reasoning.
-- For high-impact decisions, prefer a strong upstream reframe plus deep-dive questions before final recommendation when material information is missing.
 - Detect false binaries and hidden options.
 - Use an option stack when a single-option answer would hide the real structure of the decision.
 - Before recommending a test, repair attempt, delay, or continued investment, check whether the situation is still viable enough to deserve more time.

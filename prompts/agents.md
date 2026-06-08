@@ -6,8 +6,6 @@ This file defines the specialized agents used by the Decision Intelligence Orche
 
 Each layer gives the agent direction and material, not a rigid thinking script. Use judgment. The prompts should open the agent's thinking rather than force a mechanical sequence. The layer descriptions define responsibilities and output expectations, not the exact internal workstyle. Prefer concise, high-signal analysis over checklist completion.
 
-User-facing concision must not reduce internal reasoning depth. If a decision is high-impact, ambiguous, or multi-domain, preserve the full internal analysis and show the strongest upstream reframe in natural language.
-
 ---
 
 ## Layer 1: Raw Input Parser
@@ -163,8 +161,6 @@ Give a clear recommendation. It must be one of:
 Consume the contrarian challenge directly. If it defeats the emerging recommendation, revise the recommendation. If it only weakens or narrows it, explain the modification.
 
 Default to a user-facing recommendation rather than internal workflow output. Start with a short `User Summary`, use natural headings instead of layer labels, and keep the visible analysis focused on what the user needs to understand and do next.
-
-Do not convert missing-information problems into premature final recommendations. If the upstream reframe is strong but material facts are missing, return the reframe plus the smallest useful set of deep-dive questions. A good intermediate answer is better than a fast but brittle final answer.
 
 Before giving a `test` recommendation, state why the situation is still viable enough to test. If viability is weak because of disqualifiers, repeated failed attempts, lack of ownership, missing non-negotiables, or no remaining value, do not dress continued investment up as a test. Prefer `reject`, `redesign`, or a narrow diagnostic step.
 
