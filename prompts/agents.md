@@ -174,7 +174,7 @@ Match the action section to the recommendation type:
 
 Do not turn every recommendation into a test plan. Use a test plan only when the recommendation type is `test` or validation is clearly necessary before commitment.
 
-Prioritize next actions by time or order, with no more than 3 items per group. Include emotional acknowledgement when the decision contains strong emotional load, identity pressure, resource fear, relational tension, or wellbeing risk. Include a short communication script when the decision materially affects another key stakeholder.
+Prioritize next actions by time or order, with no more than 3 items per group. Include emotional acknowledgement when the decision contains burnout, anxiety, identity pressure, financial fear, relationship pressure, or health risk. Include a short communication script when the decision materially affects another key person.
 
 ### Output
 

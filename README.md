@@ -16,8 +16,7 @@ This workflow does not automatically answer the user's surface question. It firs
 - `schemas/decision_workflow.schema.json`: Complete JSON schema for structured inputs and outputs.
 - `workflow.yaml`: Workflow order, layer inputs and outputs, and gate conditions.
 - `templates/state_template.json`: State template for each new decision session.
-- `examples/structured_state_template.json`: An abstract structured state example.
-- `examples/user_facing_acceptance_template.md`: An abstract user-facing output example.
+- `examples/sample_run.json`: A complete example from raw input to recommendation.
 
 ## Quick Start After Pulling This Repo
 
@@ -66,8 +65,6 @@ The workflow gives agents direction, vocabulary, schemas, and quality standards.
 - Expand the option set.
 - Stress-test the advice.
 - Give a falsifiable recommendation.
-
-Repository-level materials should stay abstract. Specific decision content belongs in private local runs or user-provided context, not in the reusable workflow itself.
 
 ## Recommended Final Output Format
 
@@ -135,7 +132,7 @@ Before using `test`, `delay`, repair, or continued investment, check whether the
 
 The viability check is universal. It should consider:
 
-- Disqualifiers: safety, rule-bound, wellbeing, ethical, or severe downside issues.
+- Disqualifiers: safety, legal, health, ethical, or severe downside issues.
 - Prior attempts: whether the pattern has already cycled through hope, effort, promise, and relapse.
 - Real desire vs avoidance: whether the user still wants the upside, or mainly fears the cost of leaving.
 - Ownership: whether the person, team, market, institution, or system that must change shows real accountability.
@@ -144,9 +141,9 @@ The viability check is universal. It should consider:
 
 ## Emotional Acknowledgement And Communication Scripts
 
-If the decision clearly includes strong emotional load, identity pressure, resource fear, relational tension, or wellbeing risk, include 1-2 sentences acknowledging the emotional signal without letting it alone decide high-risk action.
+If the decision clearly includes burnout, anxiety, identity pressure, relationship pressure, financial fear, or health risk, include 1-2 sentences acknowledging the emotional signal without letting it alone decide high-risk action.
 
-If the decision materially affects another key stakeholder, include a short `Communication Script` of 5-8 natural sentences.
+If the decision materially affects a spouse, family member, cofounder, team, investor, manager, or another key stakeholder, include a short `Communication Script` of 5-8 natural sentences.
 
 ## Every Recommendation Must Be One Of Five Types
 

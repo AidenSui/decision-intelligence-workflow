@@ -56,7 +56,7 @@ Do not default every recommendation into a test plan:
 
 Prioritize next actions by time or order. Each group should have no more than 3 items.
 
-When the decision contains strong emotional load, identity pressure, resource fear, relational tension, or wellbeing risk, include a brief emotional acknowledgement. When it materially affects another key stakeholder, include a short natural communication script.
+When the decision contains burnout, anxiety, identity pressure, relationship pressure, financial fear, or health risk, include a brief emotional acknowledgement. When it materially affects a spouse, family member, cofounder, team, investor, manager, or another key stakeholder, include a short natural communication script.
 
 ## How To Use The Materials
 
@@ -65,8 +65,6 @@ Treat this repository as a thinking scaffold, not a rigid script.
 The prompts, schema, workflow, and example record provide direction, vocabulary, and quality standards. They should open the agent's thinking rather than force a mechanical sequence. If the user's situation clearly calls for combining layers, revisiting an earlier layer, or skipping an unnecessary intermediate step, do that and explain the reason briefly.
 
 The output contracts matter more than the internal workstyle. Preserve raw input, surface the upstream question, identify constraints and hidden options, stress-test the advice, and produce a falsifiable recommendation. Do not complete checklist items merely because they exist.
-
-Keep repository-level materials abstract. Do not add examples, modules, or rules that are tied to a specific decision domain unless the user explicitly asks for a domain-specific extension.
 
 ## User-Facing Starter Prompt
 

@@ -1,0 +1,239 @@
+{
+  "session_id": "example-001",
+  "created_at": "2026-06-03",
+  "raw_inputs": [
+    {
+      "timestamp": "2026-06-03T00:00:00-07:00",
+      "source": "initial_user_input",
+      "raw_text": "I do not know whether I should quit my job to start a company. I think my company has average prospects, but my income is pretty good. I am also afraid of missing the opportunity."
+    }
+  ],
+  "raw_input_parse": {
+    "raw_input": "I do not know whether I should quit my job to start a company. I think my company has average prospects, but my income is pretty good. I am also afraid of missing the opportunity.",
+    "decision_candidate": {
+      "plain_language_summary": "The user wants to decide whether to leave the current job and start a company.",
+      "decision_type": "career",
+      "time_horizon": "long_term",
+      "apparent_options": ["Stay at the current company", "Quit and start a company"],
+      "implicit_options": ["Keep the job and validate the startup idea on weekends", "Move to a role closer to the target market", "Set cash-flow and validation thresholds before quitting"]
+    },
+    "hidden_dilemma": "The surface question is whether to quit. The real dilemma is how to trade off cash-flow safety, market timing, identity ambition, and long-term freedom.",
+    "stated_desires": ["Avoid missing an opportunity", "Increase long-term career or business upside"],
+    "stated_fears": ["Giving up stable income", "Staying too long in an average company and missing the window"],
+    "constraints": ["Current income is pretty good", "Startup direction, cash reserves, and family obligations are unknown"],
+    "known_background": ["The user believes the current company has average prospects"],
+    "assumptions_to_test": ["The startup opportunity is real", "Quitting now would materially improve the chance of success", "Continuing to work would cause the user to miss the opportunity"],
+    "missing_information": ["Cash reserves", "Startup direction", "Whether there are users, revenue, or validation", "Learning value of the current job", "Whether the worst-case outcome is survivable"],
+    "decision_importance_assessment": {
+      "importance": "high",
+      "is_potentially_upstream": true,
+      "why": "This could affect the user's next several years of cash flow, identity path, skill compounding, and optionality.",
+      "risk_of_overthinking": "medium",
+      "risk_of_underthinking": "high"
+    },
+    "better_questions": [
+      "Do I have enough evidence that this startup opportunity is worth giving up current cash flow?",
+      "Is there a lower-cost way to validate the startup thesis instead of treating this as a binary choice?",
+      "Right now, should I optimize for freedom, cash flow, skill compounding, or market timing?"
+    ],
+    "clarification_needed": [
+      "How many months of living expenses do you have saved?",
+      "Does the startup direction have real users, revenue, or clear demand signals?",
+      "If quitting fails, what is the realistic worst case 12 months later?",
+      "Beyond income, what skills, resources, or credibility does your current job give you?",
+      "Are you escaping the current company or moving toward an already validated opportunity?"
+    ]
+  },
+  "deep_dive_questions": {
+    "questions": [
+      {
+        "priority": 1,
+        "question": "Does the startup direction currently have real users, revenue, preorders, or strong demand evidence?",
+        "why_it_matters": "This separates an opportunity-driven move from an identity- or anxiety-driven leap.",
+        "category": "external_reality",
+        "answer_would_change": "If there is strong validation, the recommendation may shift from test to commit; if not, it will likely remain test or delay."
+      },
+      {
+        "priority": 2,
+        "question": "How many months of living expenses do you have saved, and could you return to a similar income level if this fails?",
+        "why_it_matters": "This determines whether the downside is survivable.",
+        "category": "stakes",
+        "answer_would_change": "The lower the reserves and the harder the recovery path, the less reasonable it is to quit immediately."
+      },
+      {
+        "priority": 3,
+        "question": "Are you more afraid of losing income, or of discovering three years from now that you stayed on the wrong track?",
+        "why_it_matters": "This distinguishes cash-flow risk from long-term identity and freedom risk.",
+        "category": "true_objective",
+        "answer_would_change": "If long-term track risk matters more, the plan should become more active even if it remains staged."
+      }
+    ],
+    "why_not_more_questions": "These three questions cover external evidence, risk capacity, and the real objective. That is enough to decide whether to enter a low-cost validation phase."
+  },
+  "decision_reframe": {
+    "original_question": "Should I quit my job to start a company?",
+    "is_original_question_good": false,
+    "why_or_why_not": "It turns the decision into a binary choice, but the real issue is whether the startup opportunity has been validated and whether the user can get the same information with much less irreversible cost.",
+    "better_question": "How can I validate whether this startup opportunity is worth giving up current cash flow with the smallest irreversible cost?",
+    "upstream_decision": "For the next year, should the user optimize for cash flow, skill compounding, startup validation speed, or long-term freedom?",
+    "downstream_noise": ["The exact resignation date", "How to explain it to the company", "Whether to update the resume", "Whether to register a company"],
+    "decision_frame": {
+      "core_tradeoff": "Short-term cash-flow safety vs long-term upside and freedom.",
+      "real_options": ["Stay and observe", "Quit immediately", "Validate while employed", "Move to a role closer to the startup direction"],
+      "false_binary_detected": true,
+      "recommended_frame": "Treat quitting as a financing move after validation, not a courage move before validation."
+    }
+  },
+  "option_generation": {
+    "option_set": [
+      {
+        "id": "A",
+        "name": "Stay at the current company",
+        "description": "Maintain income and stability without actively validating the startup opportunity.",
+        "type": "default",
+        "reversibility": "high",
+        "upside": "low",
+        "downside": "medium",
+        "learning_value": "low",
+        "freedom_created": "low",
+        "notes": "Safe, but it may extend the period of ambiguity."
+      },
+      {
+        "id": "B",
+        "name": "Quit immediately and start the company",
+        "description": "Leave the job now and work on the startup full time.",
+        "type": "bold",
+        "reversibility": "medium",
+        "upside": "high",
+        "downside": "high",
+        "learning_value": "high",
+        "freedom_created": "medium",
+        "notes": "This is reasonable only with strong demand validation and survivable downside."
+      },
+      {
+        "id": "C",
+        "name": "Run a 90-day validation sprint while employed",
+        "description": "Set clear metrics and use evenings or weekends to validate demand, channels, and willingness to pay.",
+        "type": "experimental",
+        "reversibility": "high",
+        "upside": "medium",
+        "downside": "low",
+        "learning_value": "high",
+        "freedom_created": "high",
+        "notes": "This is the best structure when information is insufficient."
+      }
+    ],
+    "hidden_options": ["Move into a high-learning role in the target market", "Find a cofounder or first customers before quitting"],
+    "bad_options_to_avoid": ["Treating entrepreneurship as an escape from disliking the current company", "Using resignation to manufacture pressure before validation exists"]
+  },
+  "decision_quality_evaluation": {
+    "evaluations": [
+      {
+        "option_id": "C",
+        "scores": {
+          "upstream_leverage": 4,
+          "optionality": 5,
+          "asymmetric_upside": 4,
+          "downside_survivability": 5,
+          "reversibility": 5,
+          "learning_rate": 5,
+          "identity_alignment": 4,
+          "market_reality": 5,
+          "energy_truth": 4,
+          "regret_minimization": 4
+        },
+        "total_score": 45,
+        "summary": "Low cost, high learning, and high optionality make this the best structure when information is incomplete.",
+        "main_risk": "The user may procrastinate and turn the experiment into self-soothing instead of evidence generation."
+      }
+    ],
+    "evaluation_notes": "The scores expose structural strengths and weaknesses; they should not be treated as a mechanical final answer."
+  },
+  "non_consensus_insight": {
+    "consensus_view": "Most people would say not to quit impulsively and to keep earning stable income.",
+    "why_consensus_may_be_wrong": "Stable income can hide long-term path lock-in risk, especially if the current job no longer compounds skills.",
+    "non_consensus_view": "The real question is not whether to quit. It is whether the user has turned the startup from an imagined opportunity into a validated asset. Use 90 days to validate it as an asset, then decide whether to quit.",
+    "key_bet": "If the opportunity is real, strong demand signals should appear within 90 days; if they do not, quitting will not magically create demand.",
+    "what_would_make_this_wrong": ["The opportunity window is extremely short and requires full-time commitment", "The current job strictly prohibits any side validation", "The user already has enough cash and customer evidence"],
+    "edge_needed": "The user needs the ability to acquire customers, validate quickly, and tolerate uncertainty.",
+    "falsification_tests": ["Conduct 20 target-customer conversations within 30 days", "Get 3 paid customers or strong commitments within 90 days", "Identify one repeatable acquisition channel"]
+  },
+  "contrarian_challenge": {
+    "understood_recommendation": "Do not quit immediately. Run a 90-day startup validation sprint while still employed, then decide whether quitting is justified.",
+    "strongest_objection": {
+      "objection": "The 90-day validation sprint may be theoretically elegant but practically unrealistic if the user's job drains most of their energy. A low-cost experiment that the user cannot actually execute is not low-cost; it becomes guilt, delay, and false reassurance.",
+      "category": "behavioral_reality",
+      "why_it_could_defeat_the_recommendation": "If the user cannot reliably create focused time and emotional bandwidth while employed, the test will not produce valid evidence. A failed side experiment would not prove the startup opportunity is weak; it may only prove the user was overloaded.",
+      "evidence_needed_to_resolve": ["Weekly discretionary hours available outside work", "Current energy level after work", "Whether the job has predictable hours", "Whether the user has previously executed demanding side projects"]
+    },
+    "supporting_objections": [
+      {
+        "objection": "The current company may prohibit side projects in the relevant domain.",
+        "category": "constraint",
+        "severity": "medium",
+        "note": "If true, the validation plan needs legal and ethical boundaries."
+      },
+      {
+        "objection": "The startup opportunity may require speed or presence that a nights-and-weekends test cannot provide.",
+        "category": "external_reality",
+        "severity": "medium",
+        "note": "Some opportunities cannot be validated part time, especially if customers require full implementation or trust."
+      },
+      {
+        "objection": "A simpler path may be moving to a role in the target market rather than trying to validate from the outside.",
+        "category": "simpler_alternative",
+        "severity": "low",
+        "note": "This may create learning and network access without the abrupt downside of quitting."
+      }
+    ],
+    "alternative_recommendation": {
+      "short_answer": "Before starting a 90-day validation sprint, run a 2-week capacity test to prove the user can create focused execution time while employed.",
+      "decision_type": "test",
+      "why_it_may_be_better": "It tests the main bottleneck in the recommendation itself: whether the user can actually execute a side validation sprint."
+    },
+    "stress_test_result": "recommendation_needs_revision",
+    "practicality_score": 3,
+    "final_critique_summary": "The recommendation is directionally sound, but it needs a capacity checkpoint. Otherwise the plan may confuse lack of bandwidth with lack of market demand."
+  },
+  "recommendation": {
+    "short_answer": "I recommend not quitting immediately. First run a 2-week capacity test, then run a 90-day startup validation sprint if the capacity test passes.",
+    "decision_type": "test",
+    "confidence": "medium",
+    "core_reason": "The current information does not justify an irreversible commitment, but it is enough to justify active validation. The contrarian critique is right that the validation sprint only works if the user has real execution capacity while employed.",
+    "key_bet": "A real opportunity will reveal demand strength during a low-cost experiment.",
+    "strongest_contrarian_objection": "The 90-day validation sprint may be unrealistic if the user's job drains the energy and time required to execute it.",
+    "response_to_contrarian": "The objection is strong enough to modify the plan, but not strong enough to justify quitting immediately. The right response is to test execution capacity first. If the user cannot create focused time for two weeks, the bottleneck is not yet market demand; it is capacity and work design.",
+    "changed_after_contrarian_review": true,
+    "change_log": ["Added a 2-week capacity test before the 90-day validation sprint", "Made failure of the capacity test a signal to redesign the plan rather than conclude the startup idea is weak"],
+    "recommended_action_plan": [
+      {
+        "step": 1,
+        "action": "Run a 2-week capacity test with 6 focused work blocks of 90 minutes each",
+        "timeframe": "Weeks 1-2",
+        "success_condition": "You complete at least 5 of 6 blocks without harming sleep, job performance, or basic health"
+      },
+      {
+        "step": 2,
+        "action": "Define one specific target customer and pain point",
+        "timeframe": "Week 3",
+        "success_condition": "You can describe a customer profile specific enough to find real people"
+      },
+      {
+        "step": 3,
+        "action": "Complete 20 customer interviews",
+        "timeframe": "Weeks 4-6",
+        "success_condition": "At least 5 people express a strong pain or willingness to continue testing"
+      },
+      {
+        "step": 4,
+        "action": "Try to get payment, preorders, or explicit commitments",
+        "timeframe": "Weeks 7-14",
+        "success_condition": "You get 3 real payments or strong commitments"
+      }
+    ],
+    "do_not_do": ["Do not use quitting as proof of commitment", "Do not build a complex product before customer evidence exists"],
+    "watch_signals": ["Whether customers follow up proactively", "Whether they are willing to pay", "Whether acquisition is repeatable"],
+    "kill_criteria": ["You cannot complete the 2-week capacity test", "No strong demand evidence after the validation sprint", "You realize you are mainly trying to escape the current company"],
+    "what_would_make_this_wrong": ["You already have strong revenue validation", "The current job consumes so much energy that any side validation is impossible", "The opportunity window truly requires immediate full-time commitment"]
+  }
+}
