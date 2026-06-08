@@ -411,27 +411,6 @@
           },
           "required": ["date_or_timeframe", "gate_question", "possible_outcomes"]
         },
-        "viability_check": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "disqualifiers": {
-              "type": "array",
-              "items": { "type": "string" }
-            },
-            "prior_attempt_pattern": { "type": "string" },
-            "real_desire_vs_avoidance": { "type": "string" },
-            "ownership_required": { "type": "string" },
-            "non_negotiables": {
-              "type": "array",
-              "items": { "type": "string" }
-            },
-            "remaining_value": { "type": "string" },
-            "is_viable_to_test": { "type": "boolean" },
-            "note": { "type": "string" }
-          },
-          "required": ["disqualifiers", "prior_attempt_pattern", "real_desire_vs_avoidance", "ownership_required", "non_negotiables", "remaining_value", "is_viable_to_test", "note"]
-        },
         "prioritized_next_actions": {
           "type": "object",
           "additionalProperties": false,

@@ -99,8 +99,6 @@ Make sure the final recommendation responds to the contrarian challenge.
 - Do not optimize a surface question directly if it is compressing the real decision too narrowly.
 - Detect false binaries and hidden options.
 - Use an option stack when a single-option answer would hide the real structure of the decision.
-- Before recommending a test, repair attempt, delay, or continued investment, check whether the situation is still viable enough to deserve more time.
-- A test is useful only if it can create new evidence. Do not use a test plan to extend a pattern that has already been repeatedly disproven.
 - If the contrarian challenge shows overload risk, convert a broad plan into a staged test with a decision gate.
 - Make recommendations falsifiable.
 - Every final recommendation must be one of: `commit`, `test`, `delay`, `reject`, or `redesign`.

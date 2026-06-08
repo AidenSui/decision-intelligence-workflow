@@ -61,7 +61,6 @@ The workflow gives agents direction, vocabulary, schemas, and quality standards.
 - Keep the user's raw input.
 - Find the upstream question.
 - Separate constraints, assumptions, and emotional signals.
-- Check whether continued testing, waiting, repair, or investment is still viable before recommending it.
 - Expand the option set.
 - Stress-test the advice.
 - Give a falsifiable recommendation.
@@ -128,17 +127,6 @@ Do not turn every recommendation into an experiment plan. Match the visible plan
 - `reject`: use rejection rationale and alternative moves.
 - `redesign`: use redesign direction and a new option structure.
 
-Before using `test`, `delay`, repair, or continued investment, check whether the situation is still viable enough to deserve more time. More time is useful when it creates new evidence. It is harmful when it only extends a pattern that has already been repeatedly disproven.
-
-The viability check is universal. It should consider:
-
-- Disqualifiers: safety, legal, health, ethical, or severe downside issues.
-- Prior attempts: whether the pattern has already cycled through hope, effort, promise, and relapse.
-- Real desire vs avoidance: whether the user still wants the upside, or mainly fears the cost of leaving.
-- Ownership: whether the person, team, market, institution, or system that must change shows real accountability.
-- Non-negotiables: the minimum conditions required for continuing to be acceptable.
-- Remaining value: what is still worth preserving, compounding, or repairing.
-
 ## Emotional Acknowledgement And Communication Scripts
 
 If the decision clearly includes burnout, anxiety, identity pressure, relationship pressure, financial fear, or health risk, include 1-2 sentences acknowledging the emotional signal without letting it alone decide high-risk action.
@@ -165,7 +153,6 @@ A good output must:
 - Produce a non-consensus view and explain what could make it wrong.
 - Stress-test the recommendation with a contrarian challenge before finalizing it.
 - Use an option stack when the real decision spans several domains and cannot be reduced to one clean choice.
-- Do not recommend a test unless the thing being tested is still viable enough to deserve a test.
 - Convert broad strategy into a staged test when the contrarian challenge exposes overload risk.
 - Include a time-bounded decision gate for staged tests.
 - Start final answers with a concise user summary.
