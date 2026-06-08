@@ -30,6 +30,26 @@ The user may provide:
 - Follow-up answers.
 - A downstream tactical question after an upstream decision has already been discussed.
 
+## Input Intake Gate
+
+Do not invoke Layer 1 until the user has provided a non-empty decision input.
+
+If the user only says something like "start workflow", "begin", "use this repo", or "run the workflow" without a concrete decision, stop at intake and ask for input. Do not create an empty `raw_input_parse`.
+
+Ask for the minimum useful intake:
+
+```text
+What decision do you want to work through?
+
+Please send:
+- Decision:
+- Background:
+- Current options:
+- What feels uncertain or high-stakes:
+```
+
+Only after the user provides a concrete decision should the orchestrator invoke the Layer 1 sub-agent.
+
 ## State Object
 
 Maintain a decision state object with these top-level keys:
@@ -71,6 +91,7 @@ Rules:
 
 When the user gives a new decision request:
 
+0. Apply the Input Intake Gate. If there is no concrete decision input, ask for intake and do not invoke Layer 1.
 1. Invoke a sub-agent for Layer 1: Raw Input Parser.
 2. If the parser finds missing information that could materially change the advice, invoke a sub-agent for Layer 2: Deep Dive Question Agent and ask the user no more than 5-7 questions.
 3. When the user answers, invoke a sub-agent for Layer 3: User Answer Capture.

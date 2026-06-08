@@ -46,6 +46,21 @@ execution_mode:
     allowed_only_if_user_accepts: true
     must_be_labeled_non_strict: true
 
+input_intake_gate:
+  required_before: layer_1
+  requires_non_empty_user_decision: true
+  if_missing_input:
+    action: ask_user_for_intake
+    do_not_invoke_layer_1: true
+    prompt: |
+      What decision do you want to work through?
+
+      Please send:
+      - Decision:
+      - Background:
+      - Current options:
+      - What feels uncertain or high-stakes:
+
 layers:
   - id: layer_1
     name: raw_input_parser

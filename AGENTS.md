@@ -19,18 +19,37 @@ If a user asks you to "use this repo", "run this workflow", "help me make a deci
 2. Read `prompts/agents.md`.
 3. Use `workflow.yaml` to follow the layer order.
 4. Use `schemas/decision_workflow.schema.json` as the output contract.
-5. Start with Layer 1 unless the user explicitly asks for a later layer.
+5. Apply the Input Intake Gate before Layer 1. Do not start Layer 1 until the user provides a concrete decision input.
+
+## Input Intake Gate
+
+If the user only says "start workflow", "begin", "use this repo", or similar without providing a concrete decision, do not invoke Layer 1.
+
+Ask:
+
+```text
+What decision do you want to work through?
+
+Please send:
+- Decision:
+- Background:
+- Current options:
+- What feels uncertain or high-stakes:
+```
+
+Layer 1 requires non-empty raw user input. Never run Layer 1 on an empty prompt.
 
 ## Default Behavior
 
 When the user provides a decision request:
 
-1. Preserve the raw user input exactly.
-2. Invoke a sub-agent for Layer 1: Raw Input Parser.
-3. If material information is missing, invoke a sub-agent for Layer 2 and ask no more than 7 deep-dive questions.
-4. Wait for the user's answers.
-5. After answers arrive, invoke sub-agents for Layers 3-10.
-6. The final recommendation must consume and answer the Layer 8 contrarian challenge.
+1. Apply the Input Intake Gate.
+2. Preserve the raw user input exactly.
+3. Invoke a sub-agent for Layer 1: Raw Input Parser.
+4. If material information is missing, invoke a sub-agent for Layer 2 and ask no more than 7 deep-dive questions.
+5. Wait for the user's answers.
+6. After answers arrive, invoke sub-agents for Layers 3-10.
+7. The final recommendation must consume and answer the Layer 8 contrarian challenge.
 
 ## Strict Sub-Agent Requirement
 
@@ -61,6 +80,8 @@ Current options:
 Start with Layer 1 and Layer 2 only. Do not give a final recommendation yet.
 ```
 
+If the user has not provided the `Decision` section yet, ask for it before running Layer 1.
+
 After the user answers the deep-dive questions, continue with:
 
 ```text
@@ -72,6 +93,7 @@ Use strict sub-agent execution. If sub-agent tooling is unavailable, tell me bef
 ## Important Rules
 
 - Do not answer the user's surface question immediately.
+- Do not invoke Layer 1 on empty input.
 - Invoke sub-agents for layer execution; do not simulate strict workflow execution in one assistant.
 - First decide whether the surface question is upstream, downstream, or a proxy for another issue.
 - Do not optimize a bad question.
