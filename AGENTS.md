@@ -32,14 +32,6 @@ When the user provides a decision request:
 5. After answers arrive, run Layers 3-10.
 6. The final recommendation must consume and answer the Layer 8 contrarian challenge.
 
-## How To Use The Materials
-
-Treat this repository as a thinking scaffold, not a rigid script.
-
-The prompts, schema, workflow, and example record provide direction, vocabulary, and quality standards. They should open the agent's thinking rather than force a mechanical sequence. If the user's situation clearly calls for combining layers, revisiting an earlier layer, or skipping an unnecessary intermediate step, do that and explain the reason briefly.
-
-The output contracts matter more than the internal workstyle. Preserve raw input, surface the upstream question, identify constraints and hidden options, stress-test the advice, and produce a falsifiable recommendation. Do not complete checklist items merely because they exist.
-
 ## User-Facing Starter Prompt
 
 The user can start the workflow with:
